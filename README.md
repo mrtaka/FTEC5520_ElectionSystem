@@ -36,16 +36,16 @@ You then need to compile the contract and upload it to the blockchain network. R
 4. Install metamusk extension in your browser and create an account
 \n https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn
 
-5. Copy your metamusk account private to .env PRIVATE_KEY
+5. Copy your metamusk account private to .env file.
 ```
 PRIVATE_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
 6. In metamusk extension, connect to Votla blockchain Testnet
-https://www.youtube.com/watch?v=ThKW18ZZalg&t=3s
+\n https://www.youtube.com/watch?v=ThKW18ZZalg&t=3s
 
 7. Before deploy the smart contract, you must have some fund in your account, go to this link and enter your address address to get free fund
-https://voltafaucet.energyweb.org/
+\n https://voltafaucet.energyweb.org/
 
 8. In deploy.js , if you want you can edit the canditate name and the election period (optional), but default there already have value.
 ```
