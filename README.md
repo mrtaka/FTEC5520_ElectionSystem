@@ -34,7 +34,7 @@ CONTRACT_ADDRESS = ""
 You then need to compile the contract and upload it to the blockchain network. Run the following commands to compile and upload the contract.
 
 4. Install metamusk extension in your browser and create an account
-https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn
+\n https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn
 
 5. Copy your metamusk account private to .env PRIVATE_KEY
 ```
