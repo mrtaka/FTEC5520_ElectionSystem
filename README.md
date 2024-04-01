@@ -36,7 +36,7 @@ You then need to compile the contract and upload it to the blockchain network. R
 4. Install metamusk extension in your browser and create an account<br>
 https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn
 
-5. Copy your metamusk account private to .env file.
+5. Copy your metamusk account private key to .env file.
 ```
 PRIVATE_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
@@ -63,7 +63,7 @@ npx hardhat run --network volta scripts/deploy.js
 CONTRACT_ADDRESS = "0xXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 ```
 
-11. Also remember copy the contract address and copy it in the ./src/Constant/constant.js file.
+11. Also remember copy the contract address and paste it in the ./src/Constant/constant.js file.
 ```
 const contractAddress = "0xXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 ```
