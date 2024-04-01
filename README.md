@@ -1,7 +1,14 @@
-# Decentralized Voting Application
+# Decentralized District Councils Election System 
 
-This is a demo application to implement voting in solidity smart contract using ReactJS. 
+This is a prototype of Decentralized District Councils Election System base on blockchain
 
+Technology used:
+frontend: html, css, js, React, Mui
+backend: node.js
+blockchain: metamusk, Energy Web chain (volta testnet), hardhat, Solidity
+
+Credit:
+the backend are reference to https://www.youtube.com/watch?v=eCn6mHTpuM0
 
 ## Installation
 
@@ -14,6 +21,11 @@ npm install
 You first need to compile the contract and upload it to the blockchain network. Run the following commands to compile and upload the contract.
 
 ```shell
+npx hardhat compile
+npx hardhat run --network volta scripts/deploy.js
+```
+
+```
 npx hardhat compile
 npx hardhat run --network volta scripts/deploy.js
 ```
