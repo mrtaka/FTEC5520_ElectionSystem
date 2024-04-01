@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+#personal notes
+remark.txt
+
+
 # testing
 /coverage
 
