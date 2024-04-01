@@ -43,12 +43,19 @@ PRIVATE_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
 6. In metamusk extension, connect to Votla blockchain Testnet<br>
-https://www.youtube.com/watch?v=ThKW18ZZalg&t=3s
+Tutorial: https://www.youtube.com/watch?v=ThKW18ZZalg&t=3s
+```
+Network Name: Volta
+New RPC URL: https://volta-rpc.energyweb.org
+Chain ID: 73799
+Current Symbol(optinoal): VT
+Block Explorer URL(optional): http://volta-explorer.energyweb.org
+```
 
 7. Before deploy the smart contract, you must have some fund in your account, go to this link and enter your address address to get free fund<br>
 https://voltafaucet.energyweb.org/
 
-9. In deploy.js , if you want you can edit the canditate name and the election period (optional), but default there already have value.
+8. In deploy.js , if you want you can edit the canditate name and the election period (optional), but default there already have value.
 ```
 const Voting_ = await Voting.deploy(["黃占永 WONG JIM WING", "黃卓謙 WONG CHEUK HIM", "鄧肇峰 Tang Siu Fung", "陳壇丹 CHAN Tan-tan"], 1440);
 ```
