@@ -1,6 +1,7 @@
 # Hong Kong Decentralized District Councils Election System 
-
+![Frontend Homepage](./FrontendImage/page01(cover).png)
 This is a prototype of Decentralized voting system for Hong Kong District Councils Election base on blockchain on energyweb
+
 
 Technology used:
 frontend: html, css, js, React, Mui
