@@ -2,7 +2,6 @@
 
 This is a demo application to implement voting in solidity smart contract using ReactJS. 
 
-[Youtube Tutorial](https://youtu.be/eCn6mHTpuM0)
 
 ## Installation
 
