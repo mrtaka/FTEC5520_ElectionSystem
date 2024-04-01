@@ -3,12 +3,12 @@
 This is a prototype of Decentralized voting system for Hong Kong District Councils Election base on blockchain on energyweb
 
 
-#Technology used:
+# Technology used:
 frontend: html, css, js, React, Mui  
 backend: node.js  
 blockchain: metamusk, Energy Web chain (volta testnet), hardhat, Solidity  
 
-Credit:
+# Credit:
 the backend are reference to https://www.youtube.com/watch?v=eCn6mHTpuM0
 
 ## Installation
