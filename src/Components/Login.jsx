@@ -33,7 +33,7 @@ const Login = (props) => {
                 </Button>
             </Grid>
             <Grid item>
-                <Button variant="contained" color="warning" onClick={() => window.open("https://www.voterregistration.gov.hk/chi/home.html", "_blank")}>
+                <Button variant="contained" color="warning" onClick={() => window.open("https://wenlusun.wixsite.com/my-site-2", "_blank")}>
                 <Box sx={{marginLeft: "0px"}}>
                     <Typography sx={{color: "#FFFFFF", fontWeight: "bold", fontSize: "18px", textAlign: 'left'}}>登記選民</Typography>
                     <Typography sx={{color: "#FFFFFF", fontWeight: "bold", fontSize: "10px", textAlign: 'left'}}>Register as voter</Typography>
