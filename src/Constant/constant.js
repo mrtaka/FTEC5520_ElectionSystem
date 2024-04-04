@@ -1,4 +1,5 @@
-const contractAddress = "0xc11D035Ee0D24d50b7c5114c002D57FfC35B90E0";
+// const MulticontractAddress = ["0xf64548211C8F84A3E6EA37AC78261a4B264854cd","0x6d1f98586FBBe7710e2CEa31E0aE03efBd29Fd20"];
+const MulticontractAddress = ["0xb9493d0038335C1369039650dfC30F3776e0156B","0x71F62A2aD7EAA5Bb9D41cA5602986De0B3663EC4"];
 
 const contractAbi = [
     {
@@ -165,4 +166,4 @@ const contractAbi = [
     }
   ];
 
-export {contractAbi, contractAddress};
+export {contractAbi, MulticontractAddress};

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {ethers} from 'ethers';
-import {contractAbi, contractAddress} from './Constant/constant';
+import {contractAbi, MulticontractAddress} from './Constant/constant';
 import Navbar from './Components/Navbar';
 import Login from './Components/Login';
 import Finished from './Components/Finished';
@@ -16,17 +16,27 @@ function App() {
   const [provider, setProvider] = useState(null);
   const [account, setAccount] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
-  const [votingStatus, setVotingStatus] = useState(true);
-  const [remainingTime, setremainingTime] = useState('');
-  const [candidates, setCandidates] = useState([]);
   const [number, setNumber] = useState('');
   const [CanVote, setCanVote] = useState(true);
 
+  // const [votingStatus, setVotingStatus] = useState(true);
+  // const [remainingTime, setremainingTime] = useState('');
+  // const [candidates, setCandidates] = useState([]);
+
+  const [votingStatus, setVotingStatus] = useState([true,true]);
+  const [remainingTime, setremainingTime] = useState(['','']);
+  const [candidates, setCandidates] = useState([[],[]]);
+
 
   useEffect( () => {
-    getCandidates();
-    getRemainingTime();
-    getCurrentStatus();
+    for (let i = 0; i < MulticontractAddress.length; i++) {
+      getCandidates(MulticontractAddress[i],i);
+      getRemainingTime(MulticontractAddress[i],i);
+      getCurrentStatus(MulticontractAddress[i],i);
+    }
+    console.log(votingStatus)
+    console.log(remainingTime)
+    console.log(candidates)
     if (window.ethereum) {
       window.ethereum.on('accountsChanged', handleAccountsChanged);
     }
@@ -44,7 +54,7 @@ function App() {
       await provider.send("eth_requestAccounts", []);
       const signer = provider.getSigner();
       const contractInstance = new ethers.Contract (
-        contractAddress, contractAbi, signer
+        MulticontractAddress[0], contractAbi, signer
       );
 
       const tx = await contractInstance.vote(number);
@@ -58,19 +68,18 @@ function App() {
       await provider.send("eth_requestAccounts", []);
       const signer = provider.getSigner();
       const contractInstance = new ethers.Contract (
-        contractAddress, contractAbi, signer
+        MulticontractAddress[0], contractAbi, signer
       );
       const voteStatus = await contractInstance.voters(await signer.getAddress());
       setCanVote(voteStatus);
-
   }
 
-  async function getCandidates() {
+  async function getCandidates(InputcontractAddress,index) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       await provider.send("eth_requestAccounts", []);
       const signer = provider.getSigner();
       const contractInstance = new ethers.Contract (
-        contractAddress, contractAbi, signer
+        InputcontractAddress, contractAbi, signer
       );
       const candidatesList = await contractInstance.getAllVotesOfCandiates();
       // console.log(candidatesList);
@@ -81,31 +90,37 @@ function App() {
           voteCount: candidate.voteCount.toNumber()
         }
       });
-      setCandidates(formattedCandidates);
+      // setCandidates(prev => [...prev, formattedCandidates]);
+      candidates[index] = formattedCandidates
+      setCandidates(candidates);
   }
 
+  async function getRemainingTime(InputcontractAddress,index) {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const contractInstance = new ethers.Contract (
+      InputcontractAddress, contractAbi, signer
+    );
+    const time = await contractInstance.getRemainingTime();
+    // setremainingTime(prev => [...prev, parseInt(time, 16)]);
+    remainingTime[index] = time;
+    setremainingTime(remainingTime);
+}
 
-  async function getCurrentStatus() {
+
+  async function getCurrentStatus(InputcontractAddress,index) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       await provider.send("eth_requestAccounts", []);
       const signer = provider.getSigner();
       const contractInstance = new ethers.Contract (
-        contractAddress, contractAbi, signer
+        InputcontractAddress, contractAbi, signer
       );
       const status = await contractInstance.getVotingStatus();
       // console.log(status);
-      setVotingStatus(status);
-  }
-
-  async function getRemainingTime() {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      await provider.send("eth_requestAccounts", []);
-      const signer = provider.getSigner();
-      const contractInstance = new ethers.Contract (
-        contractAddress, contractAbi, signer
-      );
-      const time = await contractInstance.getRemainingTime();
-      setremainingTime(parseInt(time, 16));
+      // setVotingStatus(prev => [...prev, status]);
+      votingStatus[index] = status
+      setVotingStatus(votingStatus);
   }
 
   function handleAccountsChanged(accounts) {
@@ -149,11 +164,11 @@ function App() {
         <Navbar/>
         <Routes>
 
-          <Route path="/" element={ votingStatus ? (isConnected ? 
+          <Route path="/" element={ votingStatus[0] ? (isConnected ? 
               <Connected 
                 account = {account}
-                candidates = {candidates}
-                remainingTime = {remainingTime}
+                candidates = {candidates[0]}
+                remainingTime = {remainingTime[0]}
                 number= {number}
                 handleNumberChange = {handleNumberChange}
                 voteFunction = {vote}

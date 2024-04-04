@@ -10,11 +10,13 @@ contract Voting {
     Candidate[] public candidates;
     address owner;
     mapping(address => bool) public voters;
+    string public electoralDistrict;
 
     uint256 public votingStart;
     uint256 public votingEnd;
 
-constructor(string[] memory _candidateNames, uint256 _durationInMinutes) {
+
+constructor(string[] memory _candidateNames, uint256 _durationInMinutes, string memory _electoralDistrict) {
     for (uint256 i = 0; i < _candidateNames.length; i++) {
         candidates.push(Candidate({
             name: _candidateNames[i],
@@ -24,12 +26,15 @@ constructor(string[] memory _candidateNames, uint256 _durationInMinutes) {
     owner = msg.sender;
     votingStart = block.timestamp;
     votingEnd = block.timestamp + (_durationInMinutes * 1 minutes);
+    electoralDistrict = _electoralDistrict;
 }
 
-    modifier onlyOwner {
-        require(msg.sender == owner);
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only owner can call this function.");  
         _;
     }
+
 
     function addCandidate(string memory _name) public onlyOwner {
         candidates.push(Candidate({
@@ -37,6 +42,7 @@ constructor(string[] memory _candidateNames, uint256 _durationInMinutes) {
                 voteCount: 0
         }));
     }
+
 
     function vote(uint256 _candidateIndex) public {
         require(!voters[msg.sender], "You have already voted.");
@@ -46,9 +52,10 @@ constructor(string[] memory _candidateNames, uint256 _durationInMinutes) {
         voters[msg.sender] = true;
     }
 
-    function getAllVotesOfCandiates() public view returns (Candidate[] memory){
+    function getAllVotesOfCandidates() public view returns (Candidate[] memory){
         return candidates;
     }
+
 
     function getVotingStatus() public view returns (bool) {
         return (block.timestamp >= votingStart && block.timestamp < votingEnd);
@@ -60,5 +67,10 @@ constructor(string[] memory _candidateNames, uint256 _durationInMinutes) {
             return 0;
     }
         return votingEnd - block.timestamp;
+    }
+
+
+    function getElectoralDistrict() public view returns (string memory) {
+        return electoralDistrict;
     }
 }
