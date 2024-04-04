@@ -23,7 +23,7 @@ function App() {
   // const [remainingTime, setremainingTime] = useState('');
   // const [candidates, setCandidates] = useState([]);
 
-  const [votingStatus, setVotingStatus] = useState([true,true]);
+  const [votingStatus, setVotingStatus] = useState([false,false]);
   const [remainingTime, setremainingTime] = useState(['','']);
   const [candidates, setCandidates] = useState([[],[]]);
 
