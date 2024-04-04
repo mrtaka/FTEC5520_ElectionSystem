@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/FTEC5520_ElectionSystem/static/css/main.8edaec32.css",
+    "main.js": "/FTEC5520_ElectionSystem/static/js/main.beea95c6.js",
+    "static/js/787.b701888c.chunk.js": "/FTEC5520_ElectionSystem/static/js/787.b701888c.chunk.js",
+    "index.html": "/FTEC5520_ElectionSystem/index.html",
+    "main.8edaec32.css.map": "/FTEC5520_ElectionSystem/static/css/main.8edaec32.css.map",
+    "main.beea95c6.js.map": "/FTEC5520_ElectionSystem/static/js/main.beea95c6.js.map",
+    "787.b701888c.chunk.js.map": "/FTEC5520_ElectionSystem/static/js/787.b701888c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8edaec32.css",
+    "static/js/main.beea95c6.js"
+  ]
+}
