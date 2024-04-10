@@ -35,7 +35,7 @@ function App() {
       getCurrentStatus(MulticontractAddress[i],i);
     }
     console.log("votingStatus: ",votingStatus)
-    console.log(remainingTime)
+    console.log("remainingTime: ", remainingTime)
     console.log("candidates: ",candidates)
     if (window.ethereum) {
       window.ethereum.on('accountsChanged', handleAccountsChanged);

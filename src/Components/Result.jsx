@@ -1,15 +1,11 @@
 import React from "react";
 import { useState } from 'react';
-import { useEffect } from 'react';
 import Card from "@mui/material/Card";
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-
-import IconButton from "@mui/material/IconButton";
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import { FormControl, Select, MenuItem } from '@mui/material';
+//import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { BarChart } from '@mui/x-charts/BarChart';
 
 const Result = (props) => {
 
@@ -33,6 +29,21 @@ const Result = (props) => {
         setSelectedPoolName(MultipoolNames[event.target.value])
 
     };
+
+    function extractNames(array) {
+        if(array!== undefined){
+            return array.map(candidate => candidate.name);
+        }
+        return ["candidate1","candidate2","candidate3"]
+    }
+
+    function extractNumbers(array) {
+        console.log("array:", array)
+        if(Array.isArray(array) && array!== undefined && array.length > 0){
+            return array.map(candidate => candidate.voteCount);
+        }
+        return [0,0,0]
+    }
 
     return (
         <Box sx={{display: "flex", flexDirection: "column", alignItems: "center",}}>
@@ -62,6 +73,15 @@ const Result = (props) => {
                 <p >Remaining Time: {(selectRemainTime/360).toFixed(0)} mins {((selectRemainTime%360)*60/360).toFixed(0)} sec</p>
             </Box>
             {/* 550000 */}
+
+            {/* chart of result */}
+            <BarChart
+            xAxis={[{ scaleType: 'band', data: extractNames(selectedCandidateList) }]}
+            series={[{ data: extractNumbers(selectedCandidateList) }]}
+            width={800}
+            height={300}
+            barWidth={10}
+            />
 
             <Table>
                 <TableHead>
