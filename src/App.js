@@ -23,7 +23,7 @@ function App() {
   // const [remainingTime, setremainingTime] = useState('');
   // const [candidates, setCandidates] = useState([]);
 
-  const [votingStatus, setVotingStatus] = useState([false,false]);
+  const [votingStatus, setVotingStatus] = useState([true,true]);
   const [remainingTime, setremainingTime] = useState(['','']);
   const [candidates, setCandidates] = useState([[],[]]);
 
@@ -34,7 +34,7 @@ function App() {
       getRemainingTime(MulticontractAddress[i],i);
       getCurrentStatus(MulticontractAddress[i],i);
     }
-    console.log(votingStatus)
+    console.log("votingStatus: ",votingStatus)
     console.log(remainingTime)
     console.log(candidates)
     if (window.ethereum) {
