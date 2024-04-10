@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { Button } from "@mui/material";
 
 import IconButton from "@mui/material/IconButton";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -38,7 +39,6 @@ const Result = (props) => {
         <Box sx={{display: "flex", flexDirection: "column", alignItems: "center",}}>
         <Card sx={{margin: "10px", maxWidth: "1000px"}}>
             {/* <Typography sx={{ color: "#595857", fontWeight: "bold", fontSize: "10px", textAlign: "left" }}>You are Connected to Metamask</Typography> */}
-            
             <img src="Resource/Election_map.png" style={{ width: '100%', height: 'auto' }}/>
 
             <FormControl sx={{padding: "20px", wdith: "100%"}}>
@@ -81,6 +81,8 @@ const Result = (props) => {
                     ))}
                 </TableBody>
             </Table>
+
+            <Button sx={{m: "10px"}}variant="contained" color="primary" onClick={()=>props.setViewResultPage(false)}>Back to Home</Button>
             
         </Card>
         </Box>

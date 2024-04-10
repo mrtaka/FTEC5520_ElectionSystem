@@ -10,7 +10,7 @@ import Footer from './Components/footer';
 import './App.css';
 
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import { Box, Typography, Link } from "@mui/material";
+import { Box, Typography, Link, Button } from "@mui/material";
 
 function App() {
   const [provider, setProvider] = useState(null);
@@ -19,11 +19,13 @@ function App() {
   const [number, setNumber] = useState('');
   const [CanVote, setCanVote] = useState(true);
 
+  const [viewResultPage, setViewResultPage] = useState(false);
+
   // const [votingStatus, setVotingStatus] = useState(true);
   // const [remainingTime, setremainingTime] = useState('');
   // const [candidates, setCandidates] = useState([]);
 
-  const [votingStatus, setVotingStatus] = useState([false,false]);
+  const [votingStatus, setVotingStatus] = useState([true,true]);
   const [remainingTime, setremainingTime] = useState(['','']);
   const [candidates, setCandidates] = useState([[],[]]);
 
@@ -164,7 +166,8 @@ function App() {
         <Navbar/>
         <Routes>
 
-          <Route path="/" element={ votingStatus[0] ? (isConnected ? 
+
+          <Route path="/FTEC5520_ElectionSystem" element={!viewResultPage? (votingStatus[0] ? (isConnected ? 
               <Connected 
                 account = {account}
                 candidates = {candidates[0]}
@@ -175,15 +178,27 @@ function App() {
                 showButton = {CanVote}
               />
               : 
-              <Login connectWallet = {connectToMetamask}/>) 
+              <Login 
+                connectWallet = {connectToMetamask}
+                goViewPage = {setViewResultPage}
+              />) 
               :
-              <Finished />} />
+              <Finished />)
+              :
+              <>
+              <Result 
+                remainingTime = {remainingTime} 
+                candidates = {candidates}
+                setViewResultPage = {setViewResultPage}
+              />
+              </>
+              } />
       
-          <Route path="/result" element={<Result 
+          {/* <Route path="/FTEC5520_ElectionSystem/result" element={<Result 
             remainingTime = {remainingTime} 
             candidates = {candidates}
-            />} 
-          />
+            />}
+          /> */}
 
         </Routes>
         <Footer/>
