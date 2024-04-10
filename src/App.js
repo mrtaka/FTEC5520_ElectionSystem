@@ -164,7 +164,7 @@ function App() {
         <Navbar/>
         <Routes>
 
-          <Route path="/" element={ votingStatus[0] ? (isConnected ? 
+          <Route path="/" element={ isConnected ? ( votingStatus[0] ? 
               <Connected 
                 account = {account}
                 candidates = {candidates[0]}
@@ -175,9 +175,10 @@ function App() {
                 showButton = {CanVote}
               />
               : 
-              <Login connectWallet = {connectToMetamask}/>) 
+              <Finished />) 
               :
-              <Finished />} />
+              <Login connectWallet = {connectToMetamask}/>} 
+          />
       
           <Route path="/result" element={<Result 
             remainingTime = {remainingTime} 
