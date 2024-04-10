@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from 'react';
-import { useEffect } from 'react';
 import Card from "@mui/material/Card";
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';

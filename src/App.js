@@ -36,7 +36,7 @@ function App() {
     }
     console.log("votingStatus: ",votingStatus)
     console.log(remainingTime)
-    console.log(candidates)
+    console.log("candidates: ",candidates)
     if (window.ethereum) {
       window.ethereum.on('accountsChanged', handleAccountsChanged);
     }
