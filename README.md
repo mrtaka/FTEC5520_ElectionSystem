@@ -5,7 +5,7 @@ This is a prototype of Decentralized voting system for Hong Kong District Counci
 
 ### Technology used:
 frontend: html, css, js, React, Mui  
-backend: node.js  
+backend and api: node.js, hardhat, ethers.js
 blockchain: metamusk, Energy Web chain (volta testnet), hardhat, Solidity  
 
 ### Credit:
